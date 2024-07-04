@@ -1,5 +1,6 @@
 package dev.saitheja.EcomProductService.client;
 
+import dev.saitheja.EcomProductService.dto.FakeStoreCartResponseDTO;
 import dev.saitheja.EcomProductService.dto.FakeStoreProductResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +18,9 @@ public class FakeStoreClient {
     private String fakeStoreAPIBaseUrl;
     @Value("${fakestore.api.product.path}")
     private String fakeStoreAPIProductPath;
+    @Value("${fakestore.api.cart.for.user.path}")
+    private String fakeStoreAPICartForUser;
+
 
     public List<FakeStoreProductResponseDTO> getAllProducts(){
         String fakeStoreGetAllProductURL = fakeStoreAPIBaseUrl.concat(fakeStoreAPIProductPath);
@@ -25,6 +29,26 @@ public class FakeStoreClient {
                 restTemplate.getForEntity(fakeStoreGetAllProductURL, FakeStoreProductResponseDTO[].class);
         return List.of(productResponseList.getBody());
     }
+
+    public FakeStoreProductResponseDTO getProductById(int id){
+        String fakeStoreGetProductURL = fakeStoreAPIBaseUrl.concat(fakeStoreAPIProductPath.concat("/"+id));
+        RestTemplate restTemplate=restTemplateBuilder.build();
+        ResponseEntity<FakeStoreProductResponseDTO> productResponse=
+                restTemplate.getForEntity(fakeStoreGetProductURL, FakeStoreProductResponseDTO.class);
+        return  productResponse.getBody();
+    }
+
+
+    public List<FakeStoreCartResponseDTO> getCartByUserId(int userId){
+        // url - https://fakestoreapi.com/carts?userId=1
+        if(userId < 1)
+            return null;
+        String fakeStoreGetCartForUser = fakeStoreAPIBaseUrl.concat(fakeStoreAPICartForUser).concat(String.valueOf(userId));
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        ResponseEntity<FakeStoreCartResponseDTO[]> cartResponse =
+                restTemplate.getForEntity(fakeStoreGetCartForUser, FakeStoreCartResponseDTO[].class);
+        return List.of(cartResponse.getBody());
+    }
 }
 
 /*
@@ -32,4 +56,7 @@ restTemplate.getForEntity(fakeStoreGetAllProductURL, FakeStoreProductResponseDTO
 getForEntity(urlForAPI, the object in which you want the response)
  */
 
-//url https://fakestoreapi.com/carts?userId=1
+/*
+url https://fakestoreapi.com/carts?userId=1
+    get cart by userId, userId is query param
+ */

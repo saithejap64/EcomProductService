@@ -3,6 +3,8 @@ package dev.saitheja.EcomProductService.services;
 import dev.saitheja.EcomProductService.client.FakeStoreClient;
 import dev.saitheja.EcomProductService.dto.FakeStoreProductResponseDTO;
 import dev.saitheja.EcomProductService.entity.Product;
+import dev.saitheja.EcomProductService.exception.NoProductPresentException;
+import dev.saitheja.EcomProductService.exception.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +19,19 @@ public class FakeStoreProductServiceImpl implements ProductService{
     @Override
     public List<FakeStoreProductResponseDTO> getAllProducts() {
         List<FakeStoreProductResponseDTO> fakeStoreProducts = fakeStoreClient.getAllProducts();
+        if(fakeStoreProducts == null){
+            throw new NoProductPresentException("No products are found");
+        }
         return fakeStoreProducts;
     }
 
     @Override
-    public Product getProduct(int productId) {
-        return null;
+    public FakeStoreProductResponseDTO getProduct(int productId) throws ProductNotFoundException {
+        FakeStoreProductResponseDTO fakeStoreProductResponseDTO = fakeStoreClient.getProductById(productId);
+        if(fakeStoreProductResponseDTO == null){
+            throw new ProductNotFoundException("Product not found with id : " + productId);
+        }
+        return fakeStoreProductResponseDTO;
     }
 
     @Override
