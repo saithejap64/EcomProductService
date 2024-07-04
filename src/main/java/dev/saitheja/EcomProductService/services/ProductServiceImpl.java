@@ -1,42 +1,31 @@
 package dev.saitheja.EcomProductService.services;
 
-import dev.saitheja.EcomProductService.client.FakeStoreClient;
 import dev.saitheja.EcomProductService.dto.FakeStoreProductResponseDTO;
 import dev.saitheja.EcomProductService.entity.Product;
-import dev.saitheja.EcomProductService.exception.NoProductPresentException;
 import dev.saitheja.EcomProductService.exception.ProductNotFoundException;
+import dev.saitheja.EcomProductService.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-@Service("fakeStoreProductService")
-public class FakeStoreProductServiceImpl implements ProductService{
-
+@Service("productService")
+public class ProductServiceImpl implements ProductService{
     @Autowired
-    private FakeStoreClient fakeStoreClient;
-
+    ProductRepository productRepository;
     @Override
     public List<FakeStoreProductResponseDTO> getAllProducts() {
-        List<FakeStoreProductResponseDTO> fakeStoreProducts = fakeStoreClient.getAllProducts();
-        if(fakeStoreProducts == null){
-            throw new NoProductPresentException("No products are found");
-        }
-        return fakeStoreProducts;
+        return List.of();
     }
 
     @Override
     public FakeStoreProductResponseDTO getProduct(int productId) throws ProductNotFoundException {
-        FakeStoreProductResponseDTO fakeStoreProductResponseDTO = fakeStoreClient.getProductById(productId);
-        if(fakeStoreProductResponseDTO == null){
-            throw new ProductNotFoundException("Product not found with id : " + productId);
-        }
-        return fakeStoreProductResponseDTO;
+        return null;
     }
 
     @Override
     public Product createProduct(Product product) {
-        return null;
+        Product savedProduct= productRepository.save(product);
+        return savedProduct;
     }
 
     @Override
