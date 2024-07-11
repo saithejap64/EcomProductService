@@ -33,7 +33,6 @@ public class ProductController {
         if(id == null){
             throw new InvalidInputException("Input is not correct");
         }
-        System.out.println("Product : "+ getProductById(id));
         return ResponseEntity.ok(productService.getProduct(id));
     }
 

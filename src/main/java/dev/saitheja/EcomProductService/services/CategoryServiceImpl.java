@@ -22,6 +22,9 @@ public class CategoryServiceImpl implements CategoryService{
     @Autowired
     CategoryRepository categoryRepository;
 
+//    @Autowired
+//    FakeStoreClient fakeStoreClient;
+
     @Override
     public CategoryResponseDTO getCategory(UUID categoryId) {
         Category category =  categoryRepository.findById(categoryId).orElseThrow(() -> new CategoryNotFoundException("Category not found"));
@@ -47,7 +50,12 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public CategoryResponseDTO updateCategory(CreateCategoryRequestDTO categoryRequestDTO, UUID categoryId) {
-        return null;
+        Category savedCategory = categoryRepository.findById(categoryId).orElseThrow(
+                ()->new CategoryNotFoundException("Category not found for id: "+categoryId)
+        );
+        savedCategory.setName(categoryRequestDTO.getCategoryName());
+        savedCategory=categoryRepository.save(savedCategory);
+        return CategoryEntityDTOMapper.convertCategoryToCategoryResponseDTO(savedCategory);
     }
 
     @Override

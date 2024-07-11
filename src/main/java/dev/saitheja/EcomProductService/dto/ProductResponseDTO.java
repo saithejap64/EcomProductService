@@ -1,6 +1,5 @@
 package dev.saitheja.EcomProductService.dto;
 
-import dev.saitheja.EcomProductService.entity.Category;
 import lombok.Getter;
 import lombok.Setter;
 
