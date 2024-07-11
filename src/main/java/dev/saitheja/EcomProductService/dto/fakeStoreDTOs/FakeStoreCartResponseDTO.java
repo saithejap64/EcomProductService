@@ -1,5 +1,6 @@
-package dev.saitheja.EcomProductService.dto;
+package dev.saitheja.EcomProductService.dto.fakeStoreDTOs;
 
+import dev.saitheja.EcomProductService.dto.ProductQuantityDTO;
 import lombok.Getter;
 import lombok.Setter;
 

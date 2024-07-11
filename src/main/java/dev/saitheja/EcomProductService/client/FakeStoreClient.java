@@ -1,7 +1,7 @@
 package dev.saitheja.EcomProductService.client;
 
-import dev.saitheja.EcomProductService.dto.FakeStoreCartResponseDTO;
-import dev.saitheja.EcomProductService.dto.FakeStoreProductResponseDTO;
+import dev.saitheja.EcomProductService.dto.fakeStoreDTOs.FakeStoreCartResponseDTO;
+import dev.saitheja.EcomProductService.dto.fakeStoreDTOs.FakeStoreProductResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;

@@ -1,7 +1,7 @@
 package dev.saitheja.EcomProductService.controller;
 
 import dev.saitheja.EcomProductService.client.FakeStoreClient;
-import dev.saitheja.EcomProductService.dto.FakeStoreCartResponseDTO;
+import dev.saitheja.EcomProductService.dto.fakeStoreDTOs.FakeStoreCartResponseDTO;
 import dev.saitheja.EcomProductService.exception.CartNotFoundException;
 import dev.saitheja.EcomProductService.exception.RandomException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 public class CartController {
+    //this controller is only created for the use case of controller advice, in this code we are not doing anything related to cart
     @Autowired
     FakeStoreClient fakeStoreClient;
     @GetMapping("/cart/{userId}")
