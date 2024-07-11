@@ -1,10 +1,7 @@
-package dev.saitheja.EcomProductService.services;
+package dev.saitheja.EcomProductService.service;
 
-import dev.saitheja.EcomProductService.client.FakeStoreClient;
 import dev.saitheja.EcomProductService.dto.CategoryResponseDTO;
 import dev.saitheja.EcomProductService.dto.CreateCategoryRequestDTO;
-import dev.saitheja.EcomProductService.dto.fakeStoreDTOs.FakeStoreCartResponseDTO;
-import dev.saitheja.EcomProductService.dto.fakeStoreDTOs.FakeStoreProductResponseDTO;
 import dev.saitheja.EcomProductService.entity.Category;
 import dev.saitheja.EcomProductService.entity.Product;
 import dev.saitheja.EcomProductService.exception.CategoryNotFoundException;

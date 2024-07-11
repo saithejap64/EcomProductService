@@ -1,4 +1,4 @@
-package dev.saitheja.EcomProductService.services;
+package dev.saitheja.EcomProductService.service;
 
 import dev.saitheja.EcomProductService.dto.CreateProductRequestDTO;
 import dev.saitheja.EcomProductService.dto.ProductResponseDTO;

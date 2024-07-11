@@ -2,10 +2,8 @@ package dev.saitheja.EcomProductService.controller;
 
 import dev.saitheja.EcomProductService.dto.CreateProductRequestDTO;
 import dev.saitheja.EcomProductService.dto.ProductResponseDTO;
-import dev.saitheja.EcomProductService.entity.Product;
 import dev.saitheja.EcomProductService.exception.InvalidInputException;
-import dev.saitheja.EcomProductService.exception.ProductNotFoundException;
-import dev.saitheja.EcomProductService.services.ProductService;
+import dev.saitheja.EcomProductService.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;

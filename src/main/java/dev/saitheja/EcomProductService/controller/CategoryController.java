@@ -2,7 +2,7 @@ package dev.saitheja.EcomProductService.controller;
 
 import dev.saitheja.EcomProductService.dto.CategoryResponseDTO;
 import dev.saitheja.EcomProductService.dto.CreateCategoryRequestDTO;
-import dev.saitheja.EcomProductService.services.CategoryService;
+import dev.saitheja.EcomProductService.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +35,12 @@ public class CategoryController {
 
     @PutMapping("/{id}")
     public ResponseEntity<CategoryResponseDTO> updateCategory(@PathVariable("id") UUID categoryId, @RequestBody CreateCategoryRequestDTO createCategoryRequestDTO) throws Exception {
+        if(categoryId == null){
+            throw new Exception("Null ID");
+        }
+        if(createCategoryRequestDTO == null){
+            throw new Exception("Null Object");
+        }
         return ResponseEntity.ok(categoryService.updateCategory(createCategoryRequestDTO, categoryId));
     }
 

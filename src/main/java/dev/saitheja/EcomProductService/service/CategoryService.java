@@ -1,8 +1,7 @@
-package dev.saitheja.EcomProductService.services;
+package dev.saitheja.EcomProductService.service;
 
 import dev.saitheja.EcomProductService.dto.CategoryResponseDTO;
 import dev.saitheja.EcomProductService.dto.CreateCategoryRequestDTO;
-import dev.saitheja.EcomProductService.entity.Category;
 
 import java.util.List;
 import java.util.UUID;
